@@ -60,5 +60,15 @@ inputs.forEach((input) => {
 //   console.log(this.value);
 // });
 
-// // === USE DELEGATION ON PARENT CONTROLS ELEMENT
-// controlsElement.addEventListener("change", updateStyle);
+// FIXME Can I use event bubbling or delegation for this? Does the 'change' event.bubbles?
+// === updateStyle Handler
+function updateStyle(this: HTMLInputElement, e: Event): void {
+  // Need to target my input fields
+  console.log(e.target);
+  console.log(e.currentTarget);
+  console.log(this);
+  console.log(e.bubbles); // undefined
+}
+
+// === USE DELEGATION ON PARENT CONTROLS ELEMENT
+controlsElement.addEventListener("change", updateStyle);
